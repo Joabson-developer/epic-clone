@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --animation-duration: 6s;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  background-color: #121212;
+  color: #ffffff;
+  padding-top: 2.4rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.carousel {
+  display: grid;
+  height: 65rem;
+  grid-template-columns: 1fr 25.6rem;
+  grid-template-rows: 1fr;
+  width: 75%;
+  max-width: 160rem;
+  margin-inline: auto;
+  gap: 3.2rem;
+}
+.carousel__slides {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.carousel__slides__slide:not(.carousel__slides__slide--active) {
+  display: none;
+}
+.carousel__slides__slide.carousel__slides__slide--active {
+  animation: slider 250ms ease-in-out;
+}
+.carousel__slides__slide figure {
+  position: relative;
+}
+.carousel__slides__slide figure > img {
+  width: 100%;
+  height: 65rem;
+  object-fit: cover;
+  --mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 25%,
+    #ffffff 100%
+  );
+  -webkit-mask-image: var(--mask-image);
+  mask-image: var(--mask-image);
+}
+.carousel__slides__slide figure figcaption {
+  position: absolute;
+  max-width: 32rem;
+  height: 39rem;
+  left: 5.6rem;
+  bottom: 5.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__header {
+  max-width: 26rem;
+  animation: header-slider 800ms ease-out;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__body {
+  margin-top: auto;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__body__notice {
+  font-size: 1.2rem;
+  letter-spacing: 0.05rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__body__detail {
+  margin-bottom: 3rem;
+  font-size: 1.8rem;
+  letter-spacing: -0.02rem;
+  line-height: 1.625;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__footer__price {
+  font-size: 1.8rem;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__footer__actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__footer__actions__buy, .carousel__slides__slide figure figcaption .carousel__slides__slide__footer__actions__wishlist {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  padding-inline: 2rem;
+  font-size: 1.4rem;
+  border: none;
+  letter-spacing: 0.1rem;
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__footer__actions__buy {
+  background-color: #ffffff;
+  color: #000000;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__footer__actions__wishlist {
+  background-color: transparent;
+  color: #ffffff;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+  transition: background-color 200ms ease;
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__footer__actions__wishlist:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+.carousel__slides__slide figure figcaption .carousel__slides__slide__footer__actions__wishlist .icon-plus {
+  width: 2rem;
+  height: 2rem;
+  background-color: #000000;
+  border: 0.2rem solid #fff;
+  font-size: 1.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel__actions {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.3rem;
+}
+.carousel__actions__item {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  transition: all 350ms ease-in-out;
+}
+.carousel__actions__item.carousel__actions__item--active, .carousel__actions__item:hover {
+  background-color: #252525;
+}
+.carousel__actions__item.carousel__actions__item--active::before {
+  content: "";
+  position: absolute;
+  height: inherit;
+  background-color: #363636;
+  top: 0;
+  left: 0;
+  width: 0%;
+  animation: progress-slider linear forwards;
+  animation-duration: var(--animation-duration);
+}
+.carousel__actions__item__button {
+  width: inherit;
+  height: inherit;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.8rem;
+}
+.carousel__actions__item__button img {
+  max-height: 8rem;
+}
+
+@keyframes progress-slider {
+  to {
+    width: 100%;
+  }
+}
+@keyframes slider {
+  0% {
+    translate: 4rem 0;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+@keyframes header-slider {
+  0% {
+    translate: 8rem 0;
+    opacity: 0;
+  }
+  50%, 100% {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
